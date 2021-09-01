@@ -16,4 +16,11 @@
 .disponible {
     background-color: greenyellow;
     text-align: center;
+    padding: 5px;
+}
+
+.nodisponible {
+    background-color: lightcoral;
+    text-align: center;
+    padding: 5px;
 }
