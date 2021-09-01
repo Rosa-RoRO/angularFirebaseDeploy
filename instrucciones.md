@@ -27,4 +27,13 @@ TAREAS:
 
 TAREAS UNA A UNA: 
 
-- Tarea crear el servicio, interface y generar rutas según lo explicado arriba. 
+1. Tarea 1
+    1.1. Tarea crear el servicio, interface y generar rutas según lo explicado arriba. 
+    2.2. Crear los componentes para asignar a las rutas específicas. 
+
+
+2. Tarea 2
+    2.1. En el servicio de houses crear un mótodo que me devuelva todas las casas.
+    2.2. Consumirlo dentro del componente home y pintar cada casa con bootstrap en dicho componente.
+    2.3. Crear un botón de ver detalle que link a la vista de detalle.  
+
