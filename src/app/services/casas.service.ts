@@ -16,12 +16,24 @@ export class CasasService {
     // console.log(this.collection);
   }
 
-  getAll() : Observable<any[]>{
+  getAll(): Observable<any[]>{
     return this.collection.valueChanges();
   }
 
   getById(pId: string): Observable<any> { 
     return this.collection.doc(pId).valueChanges();
+  }
+
+
+  delete(pId: string): Promise<any> { 
+    return new Promise((resolve, reject) => {
+      try {
+        const result = this.collection.doc(pId).delete();   
+        resolve({ success: 'ok', result });
+      } catch (err) {
+        reject(err);
+      }
+    })
   }
 
 
