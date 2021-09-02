@@ -28,8 +28,8 @@ export class CasasService {
   delete(pId: string): Promise<any> { 
     return new Promise((resolve, reject) => {
       try {
-        const result = this.collection.doc(pId).delete();   
-        resolve({ success: 'ok', result });
+        this.collection.doc(pId).delete();   
+        resolve({ success: 'ok'});
       } catch (err) {
         reject(err);
       }
