@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Casa } from 'src/app/interfaces/casa.interface';
+import { Observable } from 'rxjs';
+// import { Casa } from 'src/app/interfaces/casa.interface';
 import { CasasService } from 'src/app/services/casas.service';
 
 @Component({
@@ -10,16 +11,17 @@ import { CasasService } from 'src/app/services/casas.service';
 })
 export class HouseDetailComponent implements OnInit {
 
-  miCasa: Casa | undefined;
+  miCasa: any | undefined;
 
   constructor(private activatedRoute: ActivatedRoute, 
     private casasService: CasasService) { }
 
   ngOnInit(){
     this.activatedRoute.params.subscribe(params => {
-      const id = parseInt(params.idhouse)
-      this.miCasa = this.casasService.getById(id);
+      const result = this.casasService.getById(params.idhouse);
+      result.subscribe(data => this.miCasa = data); 
     })
+
   }
 
 }
