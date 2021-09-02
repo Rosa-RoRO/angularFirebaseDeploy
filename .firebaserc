@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "airbyb-dbf24": {
+      "hosting": {
+        "deploy": [
+          "airbyb-dbf24"
+        ]
+      }
+    }
+  }
+}
