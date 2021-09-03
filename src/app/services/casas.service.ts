@@ -37,16 +37,16 @@ export class CasasService {
   }
 
 
-  create(pHouse: Casa): Promise<any> {
-    return new Promise((resolve, reject) => {
+  create(pHouse: Casa, pId: string = ""): Promise<any> {
+    return new Promise(async (resolve, reject) => {
       // Cuando lo que va a ocurrir aquí dentro no es síncrono (que no lo va a ser porque le tengoq ue hacer una petición a un servidor externo), le devuelva el error con el reject. Así, podemos rediir el resolve o el reject. 
       try{
         // resolve --> recibo una casa pero sin Id. 
         // Firestore tiene un método que me permite crear un id y asignárselo al nuevo elemento. Puntualización: el que voy a generar es el id del documento y es el que luego le voy a tener que pasar a la casa. 
           // Firestore tiene una propiedad ---> createId . Esto me genera un id de un documento
-        const id = this.firestore.createId();
+        const id = (pId === "") ? this.firestore.createId() : pId;
         pHouse.id = id;
-        const result = this.collection.doc(id).set(pHouse);
+        const result = await this.collection.doc(id).set(pHouse);
         resolve({success: 'ok'});
       } catch (err) {
         // reject
