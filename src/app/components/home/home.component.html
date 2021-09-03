@@ -5,4 +5,23 @@
             <app-card-house [casa]="casa"></app-card-house>
         </article>
     </div>
+
+    <div class="row">
+        <agm-map [fitBounds]="true" [latitude]="latitud" [longitude]="longitud" [zoom]="10"
+        (mapRightClick)="onRightClick($event)">
+            <agm-marker [agmFitBounds]="true"  [latitude]="latitud" [longitude]="longitud" [iconUrl]="$any({url: 'https://lh3.googleusercontent.com/proxy/5UNrrnpwNNxH_o0-bfPVO92MDRjEp4hHr0fh7wdiFyZG9pyRQ8ffsNXD7ataxAPHGRN-YWq-TM_7fYPwxuKuuJ5ne8cIJpUygsrTgGbEeSf_Yw0Wv1Egb97CUw_usYPYQlq36nJhyqUfDbGdC-44Ot9kD7zMmuU_K1jWVetyXpzW9eKRRD2mpDYH', scaledSize: {width: 50, height: 50}})"></agm-marker>
+            <agm-marker [agmFitBounds]="true" [latitude]="casa?.lat" [longitude]="casa?.long" *ngFor="let casa of arrCasas  | async">
+                <agm-info-window>
+                    <h6 class="tituloMarker">{{casa?.titulo}}</h6>
+                    <img class="img-fluid thumb" [src]="casa?.foto" [alt]="casa?.titulo">
+                    <button class="btn btn-danger" [routerLink]="['/house', casa?.id]">Ver detalle</button>
+                    <hr>
+                    <small>Propietario: {{casa?.propietario}}</small>
+                </agm-info-window>
+            </agm-marker>
+        </agm-map>
+    </div>
 </section>
+
+
+<!-- En agm-marker hay una propiedad que se llama fitBounds que lo que hace es ajustar el tamaño del mapa a la distribución de los markers (como cuando están repartidos por todo el mundo) -->

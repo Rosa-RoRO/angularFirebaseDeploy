@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
 import { environment } from 'src/environments/environment';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,10 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBi_XwkIxiaMjo5-_zYeT2Ezojvr6IDbks'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Casa } from 'src/app/interfaces/casa.interface';
 // import { Casa } from 'src/app/interfaces/casa.interface';
 import { CasasService } from 'src/app/services/casas.service';
 
@@ -11,7 +12,7 @@ import { CasasService } from 'src/app/services/casas.service';
 })
 export class HouseDetailComponent implements OnInit {
 
-  miCasa: any | undefined;
+  miCasa: Casa | undefined;
 
   constructor(private activatedRoute: ActivatedRoute, 
     private casasService: CasasService) { }

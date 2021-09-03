@@ -11,12 +11,25 @@ import { CasasService } from 'src/app/services/casas.service';
 export class HomeComponent implements OnInit {
 
   arrCasas: Observable<any[]> = new Observable;
+  latitud: number = 0;
+  longitud: number = 0;
 
-  constructor(private casasService: CasasService) { 
+  constructor(
+    private casasService: CasasService
+  ) { 
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.latitud = position.coords.latitude;
+      this.longitud = position.coords.longitude;
+    })
   }
 
   ngOnInit() {
     this.arrCasas = this.casasService.getAll();
+  }
+
+  onRightClick($event: any) {
+    alert('Tocando el botón derecho del ratón');
+    console.log($event);
   }
 
 }
